@@ -9,7 +9,7 @@ const navbarHeader = document.getElementById('navbarHeader');
 
 navbarHeader.onclick = () => {
     alert('ダミーボタン');
-    }
+}
 
 
 /**
@@ -25,7 +25,7 @@ function removeAllChildren(element) {
 
 assessmentButton.onclick = () => {
     const userName = userNameInput.value;
-    if (userName.length === 0){
+    if (userName.length === 0) {
         // 名前が空の時は処理を終了する
         return;
     }
@@ -43,9 +43,9 @@ assessmentButton.onclick = () => {
     // TODO ツイートエリアの作成
     removeAllChildren(tweetDivided);
     const anchor = document.createElement('a');
-    const hrefValue = 
-        'https://twitter.com/intent/tweet?button_hashtag=' + 
-        encodeURIComponent('あなたのいいところ') + 
+    const hrefValue =
+        'https://twitter.com/intent/tweet?button_hashtag=' +
+        encodeURIComponent('あなたのいいところ') +
         '&ref_src=twsrc%5Etfw';
     anchor.setAttribute('href', hrefValue);
     anchor.className = 'twitter-hashtag-button';
@@ -62,9 +62,9 @@ assessmentButton.onclick = () => {
 //　Enterキーを押下したとき
 userNameInput.onkeydown = (event) => {
     if (event.key === 'Enter') {
-      assessmentButton.onclick();
+        assessmentButton.onclick();
     }
-  };
+};
 
 
 const answers = [
