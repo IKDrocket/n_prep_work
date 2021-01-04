@@ -49,7 +49,7 @@ assessmentButton.onclick = () => {
         '&ref_src=twsrc%5Etfw';
     anchor.setAttribute('href', hrefValue);
     anchor.className = 'twitter-hashtag-button';
-    anchor.setAttribute('data-text', result + 'https://ikdrocket.github.io/assessment/assessment.html');
+    anchor.setAttribute('data-text', result + 'https://ikdrocket.github.io/n_prep_work/chapter1/assessment/assessment.html \n');
     anchor.innerText = 'Tweet #あなたのいいところ';
     tweetDivided.appendChild(anchor);
 
