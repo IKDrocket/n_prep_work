@@ -13,7 +13,7 @@ function fib(n) {
     return value;
 }
 
-const length = 40;
+const length = 100;
 for (let i = 0; i <= length; i++) {
     console.log(fib(i));
 }
