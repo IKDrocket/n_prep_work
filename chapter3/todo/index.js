@@ -1,6 +1,26 @@
 'use strict';
 // { name: タスクの文字列, state: 完了しているかどうかの真偽値}
-const tasks = [];
+let tasks = [];
+const fs = require('fs');
+const fileName = './tasks.json';
+
+
+// 同期的にファイルから復元
+try {
+  const data = fs.readFileSync(fileName, 'utf-8');
+  tasks = JSON.parse(data);
+} catch (ignore) {
+  console.log(fileName + 'から復元できませんでした');
+}
+
+
+/**
+ * タスクをファイルに保存する
+ * @param {string} task
+ */
+function saveTasks() {
+  fs.writeFileSync(fileName, JSON.stringify(tasks), 'utf-8');
+}
 
 
 /**
@@ -9,6 +29,7 @@ const tasks = [];
  */
 function add(task) {
   tasks.push({ name: task, state: false });
+  saveTasks();
 }
 
 
@@ -17,7 +38,7 @@ function add(task) {
 * @param {object} taskAndIsDonePair
 * @return {boolean} 完了したかどうか
 */
-function isDone(taskAndIsDonePair){
+function isDone(taskAndIsDonePair) {
   return taskAndIsDonePair.state;
 }
 
@@ -49,6 +70,7 @@ function done(task) {
   const indexFound = tasks.findIndex(t => t.name === task);
   if (indexFound !== -1) {
     tasks[indexFound].state = true;
+    saveTasks();
   }
 }
 
@@ -70,14 +92,15 @@ function del(task) {
   const indexFound = tasks.findIndex(t => t.name === task);
   if (indexFound !== -1) {
     tasks.splice(indexFound, 1);
+    saveTasks();
   }
 }
 
 
-module.exports = { 
-	add,
-	list,
-        done,
-	donelist,
-	del
+module.exports = {
+  add,
+  list,
+  done,
+  donelist,
+  del
 };
